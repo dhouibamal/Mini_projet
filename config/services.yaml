@@ -1,0 +1,30 @@
+# config/services.yaml
+
+parameters:
+    # Paramètres de l'application
+    app.jwtsecret: '%env(APP_SECRET)%'  # La clé secrète JWT tirée de l'environnement
+
+services:
+    # Configuration par défaut pour les services
+    _defaults:
+        autowire: true      # Injection automatique des dépendances
+        autoconfigure: true # Enregistrement automatique des services comme commandes, abonnés aux événements, etc.
+
+    # Fait en sorte que toutes les classes dans le dossier src soient disponibles comme services
+    # Cela crée un service par classe avec le nom complet de la classe
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'  # On exclut ce dossier
+            - '../src/Entity/'  # On exclut les entités de la configuration des services
+            - '../src/Kernel.php'  # On exclut le fichier Kernel
+
+    # Déclare le service JWTService
+    App\Service\JWTService:
+        arguments:
+            $jwtSecret: '%app.jwtsecret%'  # Injection de la clé secrète depuis les paramètres
+
+    # Service Mailer
+    App\Service\SendEmailService:
+        arguments:
+            $mailer: '@mailer' # Injecter le service Mailer de Symfony
