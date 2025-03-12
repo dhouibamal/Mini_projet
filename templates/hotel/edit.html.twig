@@ -1,0 +1,18 @@
+{# templates/hotel/edit.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer un Hôtel{% endblock %}
+
+{% block body %}
+    <h1>Éditer un Hôtel</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.ville) }}
+        {{ form_row(form.categorie) }}
+        {{ form_row(form.defaultPrice) }}
+        <button type="submit" class="btn btn-warning">Sauvegarder</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_hotel') }}" class="btn btn-secondary">Retour à la liste des hôtels</a>
+{% endblock %}

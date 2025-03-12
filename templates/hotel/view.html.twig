@@ -1,0 +1,15 @@
+{# templates/hotel/view.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Voir un Hôtel{% endblock %}
+
+{% block body %}
+    <h1>Voir un Hôtel</h1>
+
+    <p><strong>Nom:</strong> {{ hotel.nom }}</p>
+    <p><strong>Ville:</strong> {{ hotel.ville }}</p>
+    <p><strong>Catégorie:</strong> {{ hotel.categorie }}</p>
+    <p><strong>Prix par défaut:</strong> {{ hotel.defaultPrice }} dinars</p>
+
+    <a href="{{ path('app_hotel') }}" class="btn btn-secondary">Retour à la liste des hôtels</a>
+{% endblock %}

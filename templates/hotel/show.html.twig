@@ -1,0 +1,22 @@
+{# templates/hotel/show.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'Hôtel{% endblock %}
+
+{% block body %}
+    <h1>{{ hotel.nom }}</h1>
+    <p>Ville : {{ hotel.ville }}</p>
+    <p>Catégorie : {{ hotel.categorie }}</p>
+    <p>Prix par défaut : {{ hotel.defaultPrice }} dinars</p>
+
+    <h3>Photos de l'Hôtel :</h3>
+    <div class="gallery">
+        {% for photo in hotel.hotelPhotos %}
+            <img src="{{ asset('uploads/photos/' ~ photo.path) }}" alt="Photo de l'hôtel" class="img-thumbnail" />
+        {% else %}
+            <p>Aucune photo disponible</p>
+        {% endfor %}
+    </div>
+
+    <a href="{{ path('app_hotel') }}" class="btn btn-secondary">Retour à la liste des hôtels</a>
+{% endblock %}

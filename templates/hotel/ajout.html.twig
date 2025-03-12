@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un Hôtel{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un Hôtel</h1>
+
+    <!-- Affichage du formulaire d'ajout d'hôtel -->
+    {{ form_start(form) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.ville) }}
+        {{ form_row(form.categorie) }}
+        {{ form_row(form.defaultPrice) }}
+        {# Le bouton de soumission est déjà inclus dans le formulaire Symfony #}
+        {{ form_row(form.submit) }}  {# Cela affiche le bouton de soumission déjà défini dans Symfony #}
+    {{ form_end(form) }}
+
+    <!-- Lien pour retourner à la liste des hôtels -->
+    <a href="{{ path('app_hotel') }}" class="btn btn-secondary mt-3">Retour à la liste des hôtels</a>
+
+{% endblock %}
